@@ -1,0 +1,17 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\git\\projectmonster\\source\\projectmonster\\private\\abilitysystem\\pmattributeset.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\projectmonster\\intermediate\\build\\win64\\x64\\projectmonstereditor\\debuggame\\unrealed\\sharedpch.unrealed.project.nonoptimized.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\git\\projectmonster\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\projectmonster\\definitions.projectmonster.h",
+            "d:\\git\\projectmonster\\source\\projectmonster\\public\\abilitysystem\\pmattributeset.h",
+            "d:\\epicgames\\ue_5.6\\engine\\plugins\\runtime\\gameplayabilities\\source\\gameplayabilities\\public\\attributeset.h",
+            "d:\\epicgames\\ue_5.6\\engine\\plugins\\runtime\\gameplayabilities\\intermediate\\build\\win64\\unrealeditor\\inc\\gameplayabilities\\uht\\attributeset.generated.h",
+            "d:\\git\\projectmonster\\intermediate\\build\\win64\\unrealeditor\\inc\\projectmonster\\uht\\pmattributeset.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

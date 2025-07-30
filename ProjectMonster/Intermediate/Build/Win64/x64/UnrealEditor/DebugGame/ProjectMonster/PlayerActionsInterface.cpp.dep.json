@@ -1,0 +1,17 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\git\\projectmonster\\source\\projectmonster\\private\\interfaces\\playeractionsinterface.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\projectmonster\\intermediate\\build\\win64\\x64\\projectmonstereditor\\debuggame\\unrealed\\sharedpch.unrealed.project.nonoptimized.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\git\\projectmonster\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\projectmonster\\definitions.projectmonster.h",
+            "d:\\git\\projectmonster\\source\\projectmonster\\public\\interfaces\\playeractionsinterface.h",
+            "d:\\epicgames\\ue_5.6\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputactionvalue.h",
+            "d:\\epicgames\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputactionvalue.generated.h",
+            "d:\\git\\projectmonster\\intermediate\\build\\win64\\unrealeditor\\inc\\projectmonster\\uht\\playeractionsinterface.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
