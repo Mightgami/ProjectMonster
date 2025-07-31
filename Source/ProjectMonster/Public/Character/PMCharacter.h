@@ -3,19 +3,19 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PaperZDCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Interfaces/PlayerActionsInterface.h"
 #include "Interfaces/AttackEndInterface.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "CharacterTypes.h"
+#include "PMCharacterBase.h"
 #include "PMCharacter.generated.h"
 
 /**
  *
  */
 UCLASS()
-class PROJECTMONSTER_API APMCharacter : public APaperZDCharacter, public IPlayerActionsInterface, public IAttackEndInterface
+class PROJECTMONSTER_API APMCharacter : public APMCharacterBase, public IPlayerActionsInterface, public IAttackEndInterface
 {
     GENERATED_BODY()
 

@@ -3,15 +3,28 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemInterface.h"
 #include "GameFramework/PlayerState.h"
 #include "PMPlayerState.generated.h"
 
-/**
- * 
- */
+class UAbilitySystemComponent;
+class UAttributeSet;
+
 UCLASS()
-class PROJECTMONSTER_API APMPlayerState : public APlayerState
+class PROJECTMONSTER_API APMPlayerState : public APlayerState, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
+public:
+	APMPlayerState();
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
+
 	
+protected:
+	
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
+
+	UPROPERTY()
+	TObjectPtr<UAttributeSet> AttributeSet;		
 };

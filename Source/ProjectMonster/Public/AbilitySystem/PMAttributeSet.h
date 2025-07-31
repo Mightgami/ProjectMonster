@@ -13,5 +13,5 @@ UCLASS()
 class PROJECTMONSTER_API UPMAttributeSet : public UAttributeSet
 {
 	GENERATED_BODY()
-	
+
 };
