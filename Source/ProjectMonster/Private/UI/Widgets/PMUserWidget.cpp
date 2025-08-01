@@ -3,3 +3,8 @@
 
 #include "UI/Widgets/PMUserWidget.h"
 
+void UPMUserWidget::SetWidgetController(UObject* InWidgetController)
+{
+	WidgetController = InWidgetController;
+	WidgetControllerSet();
+}
