@@ -2,24 +2,22 @@
 
 
 #include "Character/PMCharacter.h"
+#include "AbilitySystemComponent.h"
 #include "PaperFlipBookComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperZDAnimInstance.h"
+#include "Player/PMPlayerState.h"
 
 APMCharacter::APMCharacter()
 {
-    // Creiamo il componente SpringArm (CameraBoom) e lo attacchiamo al RootComponent
+ 
     CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
     CameraBoom->SetupAttachment(RootComponent);
-    // Impostiamo la distanza desiderata della telecamera dal personaggio
     CameraBoom->TargetArmLength = 500.0f;
-    // Permettiamo alla telecamera di seguire la rotazione del personaggio
     CameraBoom->bUsePawnControlRotation = true;
     CameraBoom->SetRelativeRotation(FRotator(-90.0f, 0.0f, 0.0f));
-    // Creiamo la telecamera e la attacchiamo al SpringArm
     FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
     FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
-    // La telecamera non deve ruotare indipendentemente dal SpringArm
     FollowCamera->bUsePawnControlRotation = false;
     //FollowCamera->ProjectionMode = ECameraProjectionMode::Orthographic;
     FollowCamera->OrthoWidth = 2048.0f;
@@ -90,4 +88,21 @@ void APMCharacter::Attack_Implementation()
 void APMCharacter::EndAttack_Implementation()
 {
     CurrentState = EActionState::EAS_Unoccupied;
+}
+
+void APMCharacter::PossessedBy(AController* NewController)
+{
+    Super::PossessedBy(NewController);
+
+    // Init ability actor info for the Server
+    InitAbilityActorInfo();
+}
+
+void APMCharacter::InitAbilityActorInfo()
+{
+    APMPlayerState* PMPlayerState = GetPlayerState<APMPlayerState>();
+    check(PMPlayerState);
+    PMPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(PMPlayerState, this);
+    AbilitySystemComponent = PMPlayerState->GetAbilitySystemComponent();
+    AttributeSet = PMPlayerState->GetAttributeSet();
 }

@@ -13,7 +13,8 @@
 				"AIModule",
 				"UMG",
 				"PaperZD",
-				"GameplayAbilities"
+				"GameplayAbilities",
+				"CoreUObject"
 			]
 		}
 	],

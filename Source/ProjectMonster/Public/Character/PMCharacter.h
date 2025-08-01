@@ -22,10 +22,16 @@ class PROJECTMONSTER_API APMCharacter : public APMCharacterBase, public IPlayerA
 public:
     APMCharacter();
 public:
+
+    // Region IPlayerActionsInterface
     virtual void Move_Implementation(const FVector2D& MovementVector) override;
     virtual void Jump_Implementation() override;
     virtual void Attack_Implementation() override;
+    // End Region IPlayerActionsInterface
+    // RegioIAttackEndInterface
     virtual void EndAttack_Implementation() override;
+    // End Regio IAttackEndInterface
+    virtual void PossessedBy(AController* NewController) override;
 protected:
     /** Spring arm to offset the camera from the character */
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
@@ -39,4 +45,6 @@ protected:
     EActionState CurrentState = EActionState::EAS_Unoccupied;
 
 
+private:
+    void InitAbilityActorInfo();
 };
