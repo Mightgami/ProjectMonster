@@ -13,16 +13,17 @@ ABasicSmartNavLinkProxy::ABasicSmartNavLinkProxy()
 	PointLinks[0].Right = FVector(100.f, 0.f, 0.f);
 }
 
-void ABasicSmartNavLinkProxy::BeginPlay()
-{
-	Super::BeginPlay();
-	PointLinks.Empty();
-}
-
 #if WITH_EDITOR
 void ABasicSmartNavLinkProxy::PostEditMove(bool bFinished)
 {
 	Super::PostEditMove(bFinished);
+
+	if (PointLinks.Num() == 0)
+	{
+		const FNavigationLink NewLink;
+		PointLinks.Add(NewLink);
+	}
+	
 	if (!IsRootDragged)
 	{
 		RootPreviousLocation.X = SnapValueToGrid(GetActorLocation().X, SingleTileSize);

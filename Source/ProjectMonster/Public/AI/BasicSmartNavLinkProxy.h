@@ -15,7 +15,6 @@ class PROJECTMONSTER_API ABasicSmartNavLinkProxy : public ANavLinkProxy
 	GENERATED_BODY()
 protected:
 	ABasicSmartNavLinkProxy();
-	virtual void BeginPlay() override;
 
 #if WITH_EDITOR
 	virtual void PostEditMove(bool bFinished) override;
