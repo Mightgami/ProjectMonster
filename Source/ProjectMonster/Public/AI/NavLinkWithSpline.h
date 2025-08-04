@@ -28,6 +28,21 @@ protected:
 #endif
 	
 private:
+	/** NavLink Positioning **/
+	float SnapValueToGrid(float DragPosition, const float Interval);
+	void SnapRootToTileMap();
+	void SnapEndLinkToTileMap();
+	bool IsRootDragged = false;
+	FVector RootPreviousLocation;
+	bool bIsConstructed = false;
+	
+	UPROPERTY(EditAnywhere, Category = "NavLink Positioning")
+	float SingleTileSize = 100.f;
+	/** End NavLink Positioning **/
+
+	/** Spline **/
+	void SetSplinePosition();
+
 	UPROPERTY(EditAnywhere, Category = "JumpTrajectory")
 	TObjectPtr<USplineComponent> SplineComponent;
 	
@@ -44,20 +59,18 @@ private:
 	float Curvature = 100.f;
 
 	UPROPERTY(EditAnywhere, Category = "JumpTrajectory|Same", meta = (EditCondition = "bShouldBeEqualForSide", EditConditionHides))
-	float Flatness = 0.f;
+	float Roundness = 0.f;
 	
 	UPROPERTY(EditAnywhere, Category = "JumpTrajectory|Right", meta = (EditCondition = "!bShouldBeEqualForSide", EditConditionHides))
 	float RightCurvature = 100.f;
 
 	UPROPERTY(EditAnywhere, Category = "JumpTrajectory|Right", meta = (EditCondition = "!bShouldBeEqualForSide", EditConditionHides))
-	float RightFlatness = 0.f;
+	float RightRoundness = 0.f;
 
 	UPROPERTY(EditAnywhere, Category = "JumpTrajectory|Left", meta = (EditCondition = "!bShouldBeEqualForSide", EditConditionHides))
 	float LeftCurvature = 100.f;
 
 	UPROPERTY(EditAnywhere, Category = "JumpTrajectory|Left", meta = (EditCondition = "!bShouldBeEqualForSide", EditConditionHides))
-	float LeftFlatness = 0.f;
-
-private:
-	void SetSplinePosition();
+	float LeftRoundness = 0.f;
+	/** End Spline **/
 };
