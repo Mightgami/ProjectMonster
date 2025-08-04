@@ -6,7 +6,9 @@
 #include "PaperFlipBookComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperZDAnimInstance.h"
+#include "Player/PMPlayerController.h"
 #include "Player/PMPlayerState.h"
+#include "UI/HUD/PMHUD.h"
 
 APMCharacter::APMCharacter()
 {
@@ -105,4 +107,13 @@ void APMCharacter::InitAbilityActorInfo()
     PMPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(PMPlayerState, this);
     AbilitySystemComponent = PMPlayerState->GetAbilitySystemComponent();
     AttributeSet = PMPlayerState->GetAttributeSet();
+
+
+    if (APMPlayerController* PMPlayerController = Cast<APMPlayerController>(GetController()))
+    {
+        if (APMHUD* PMHUD = Cast<APMHUD>(PMPlayerController->GetHUD()))
+        {
+            PMHUD->InitOverlay(PMPlayerController, PMPlayerState, AbilitySystemComponent, AttributeSet);
+        }
+    }
 }
