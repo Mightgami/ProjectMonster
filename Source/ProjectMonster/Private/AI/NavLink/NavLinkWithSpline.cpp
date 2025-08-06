@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI/NavLinkWithSpline.h"
+#include "AI/NavLink/NavLinkWithSpline.h"
 
 #include "Components/SplineComponent.h"
 

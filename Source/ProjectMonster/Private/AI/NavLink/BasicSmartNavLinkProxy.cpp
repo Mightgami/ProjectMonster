@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AI/BasicSmartNavLinkProxy.h"
+#include "AI/NavLink/BasicSmartNavLinkProxy.h"
 
 
 ABasicSmartNavLinkProxy::ABasicSmartNavLinkProxy()
