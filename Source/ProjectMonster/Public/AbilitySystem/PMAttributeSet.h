@@ -60,7 +60,37 @@ public:
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
+
+	/*
+	 *Primary Attributes
+	 */
+	UPROPERTY(BlueprintReadOnly, Category = "Primary Attributes")
+	FGameplayAttributeData Strength;
+	ATTRIBUTE_ACCESSORS(UPMAttributeSet, Strength);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Primary Attributes")
+	FGameplayAttributeData Dexterity;
+	ATTRIBUTE_ACCESSORS(UPMAttributeSet, Dexterity);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Primary Attributes")
+	FGameplayAttributeData Constitution;
+	ATTRIBUTE_ACCESSORS(UPMAttributeSet, Constitution);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Primary Attributes")
+	FGameplayAttributeData Intelligence;
+	ATTRIBUTE_ACCESSORS(UPMAttributeSet, Intelligence);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Primary Attributes")
+	FGameplayAttributeData Wisdom;
+	ATTRIBUTE_ACCESSORS(UPMAttributeSet, Wisdom);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Primary Attributes")
+	FGameplayAttributeData Charisma;
+	ATTRIBUTE_ACCESSORS(UPMAttributeSet, Charisma);
 	
+	/*
+	 *Seconary Attributes
+	 */
 	UPROPERTY(BlueprintReadOnly, Category = "Vital Attributes")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UPMAttributeSet, Health);
