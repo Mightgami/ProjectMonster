@@ -14,5 +14,11 @@ APMEnemy::APMEnemy()
 void APMEnemy::BeginPlay()
 {
 	Super::BeginPlay();
-	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	InitAbilityActorInfo();
+	
+}
+
+void APMEnemy::InitAbilityActorInfo()
+{
+	Cast<UPMAbilitySystemComponent>(AbilitySystemComponent)->InitAbilityActorInfo(this, this);
 }

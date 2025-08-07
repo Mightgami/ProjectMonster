@@ -8,6 +8,7 @@
 #include "PaperZDAnimInstance.h"
 #include "Player/PMPlayerController.h"
 #include "Player/PMPlayerState.h"
+#include "AbilitySystem/PMAbilitySystemComponent.h"
 #include "UI/HUD/PMHUD.h"
 
 APMCharacter::APMCharacter()
@@ -98,14 +99,16 @@ void APMCharacter::PossessedBy(AController* NewController)
 
     // Init ability actor info for the Server
     InitAbilityActorInfo();
+    AddCharacterAbilities();
 }
 
 void APMCharacter::InitAbilityActorInfo()
 {
     APMPlayerState* PMPlayerState = GetPlayerState<APMPlayerState>();
     check(PMPlayerState);
-    PMPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(PMPlayerState, this);
     AbilitySystemComponent = PMPlayerState->GetAbilitySystemComponent();
+    AbilitySystemComponent->InitAbilityActorInfo(PMPlayerState, this);
+    Cast<UPMAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
     AttributeSet = PMPlayerState->GetAttributeSet();
 
 

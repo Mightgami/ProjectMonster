@@ -9,6 +9,7 @@
 
 class UAbilitySystemComponent;
 class UAttributeSet;
+class UGameplayAbility;
 
 UCLASS()
 class PROJECTMONSTER_API APMCharacterBase : public APaperZDCharacter, public IAbilitySystemInterface
@@ -27,5 +28,11 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
+
+	void AddCharacterAbilities();
 	
+	virtual void InitAbilityActorInfo();
+private:
+	UPROPERTY(EditAnywhere, Category = "Abilities")
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 };
