@@ -9,18 +9,24 @@ public class ProjectMonster : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		PublicDependencyModuleNames.AddRange(new string[] {
+			// Default Node
 			"Core",
 			"CoreUObject",
 			"Engine",
+			
+			// New Module
 			"InputCore",
 			"EnhancedInput",
 			"AIModule",
 			"StateTreeModule",
 			"GameplayStateTreeModule",
-			"UMG",
 			"GameplayAbilities",
 			"Paper2D",
-			"UnrealEd"
+			"PaperZD",
+			
+			// New Module - Editor Only
+			"UnrealEd",
+			"UMG"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {"GameplayTags","GameplayTasks" });
