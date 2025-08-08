@@ -18,7 +18,9 @@ public class ProjectMonster : ModuleRules
 			"StateTreeModule",
 			"GameplayStateTreeModule",
 			"UMG",
-			"GameplayAbilities", "Paper2D", "PaperZD"
+			"GameplayAbilities",
+			"Paper2D",
+			"UnrealEd"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {"GameplayTags","GameplayTasks" });

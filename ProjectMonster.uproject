@@ -14,7 +14,8 @@
 				"UMG",
 				"PaperZD",
 				"GameplayAbilities",
-				"CoreUObject"
+				"CoreUObject",
+				"BlueprintGraph"
 			]
 		}
 	],
