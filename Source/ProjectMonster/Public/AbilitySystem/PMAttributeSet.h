@@ -13,6 +13,43 @@ GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
 GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
+USTRUCT(BlueprintType)
+struct FPartyMemberAttributes
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    float Strength;
+
+    UPROPERTY(BlueprintReadWrite)
+    float Dexterity;
+
+    UPROPERTY(BlueprintReadWrite)
+    float Constitution;
+    
+	UPROPERTY(BlueprintReadWrite)
+	float Intelligence;
+
+	UPROPERTY(BlueprintReadWrite)
+	float Wisdom;
+
+	UPROPERTY(BlueprintReadWrite)
+	float Charisma;
+
+	UPROPERTY(BlueprintReadWrite)
+	float Health;
+
+	UPROPERTY(BlueprintReadWrite)
+	float MaxHealth;
+	
+    FPartyMemberAttributes()
+	    : Strength(10.f), Dexterity(10.f), Constitution(10.f), Intelligence(10.f), Wisdom(10.f), Charisma(10.f),
+	      Health(50.f),
+	      MaxHealth(100.f)
+    {
+    }
+};
+
 
 USTRUCT()
 struct FEffectProperties
@@ -94,7 +131,6 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Vital Attributes")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UPMAttributeSet, Health);
-	
 	UPROPERTY(BlueprintReadOnly, Category = "Vital Attributes")
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UPMAttributeSet, MaxHealth);

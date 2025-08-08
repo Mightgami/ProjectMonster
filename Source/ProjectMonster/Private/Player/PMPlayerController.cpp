@@ -2,6 +2,7 @@
 #include "Interfaces/PlayerActionsInterface.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Player/PMPlayerState.h"
 
 void APMPlayerController::SetupInputComponent()
 {
@@ -41,6 +42,19 @@ void APMPlayerController::SetupInputComponent()
         {
             EnhancedInputComponent->BindAction(IA_Attack, ETriggerEvent::Started, this, &APMPlayerController::Attack);
         }
+        if (IA_Switch1)
+        {
+            EnhancedInputComponent->BindAction(IA_Switch1,  ETriggerEvent::Started, this, &APMPlayerController::SwitchToMember1);
+        }
+        if (IA_Switch2)
+        {
+            EnhancedInputComponent->BindAction(IA_Switch2,  ETriggerEvent::Started, this, &APMPlayerController::SwitchToMember2);
+        }
+        if (IA_Switch3)
+        {
+            EnhancedInputComponent->BindAction(IA_Switch3,  ETriggerEvent::Started, this, &APMPlayerController::SwitchToMember3);
+        }
+
     }
 }
 
@@ -70,5 +84,32 @@ void APMPlayerController::Attack(const FInputActionValue& Value)
     if (ControlledPawn && ControlledPawn->GetClass()->ImplementsInterface(UPlayerActionsInterface::StaticClass()))
     {
         IPlayerActionsInterface::Execute_Attack(ControlledPawn);
+    }
+}
+
+void APMPlayerController::SwitchToMember1()
+{
+    SwitchToMemberByIndex(0);
+
+}
+
+void APMPlayerController::SwitchToMember2()
+{
+    SwitchToMemberByIndex(1);
+
+}
+
+void APMPlayerController::SwitchToMember3()
+{
+    SwitchToMemberByIndex(2);
+
+}
+
+void APMPlayerController::SwitchToMemberByIndex(int32 Index)
+{
+    APMPlayerState* PS = GetPlayerState<APMPlayerState>();
+    if (PS)
+    {
+        PS->SwitchToPartyMember(Index);
     }
 }

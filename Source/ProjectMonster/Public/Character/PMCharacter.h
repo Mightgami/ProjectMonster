@@ -32,6 +32,9 @@ public:
     virtual void EndAttack_Implementation() override;
     // End Regio IAttackEndInterface
     virtual void PossessedBy(AController* NewController) override;
+    
+    void UpdateAnimInstance(TSubclassOf<UPaperZDAnimInstance> PaperZDAnimInstance);
+
 protected:
     /** Spring arm to offset the camera from the character */
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)

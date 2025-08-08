@@ -21,6 +21,8 @@ public:
 
     virtual void SetupInputComponent() override;
 
+
+
 protected:
 
     // Referenze agli asset di Input Mapping Context e Input Action
@@ -35,9 +37,23 @@ protected:
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
     TObjectPtr<UInputAction> IA_Attack;
+    
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+    TObjectPtr<UInputAction> IA_Switch1;
 
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+    TObjectPtr<UInputAction> IA_Switch2;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+    TObjectPtr<UInputAction> IA_Switch3;
     // Funzioni callback per input
     void Move(const FInputActionValue& Value);
     void Jump(const FInputActionValue& Value);
     void Attack(const FInputActionValue& Value);
+    
+    void SwitchToMember1();
+    void SwitchToMember2();
+    void SwitchToMember3();
+
+    void SwitchToMemberByIndex(int32 Index);
 };

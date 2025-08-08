@@ -7,6 +7,7 @@
 #include "AbilitySystemInterface.h"
 #include "PMCharacterBase.generated.h"
 
+class UGameplayEffect;
 class UAbilitySystemComponent;
 class UAttributeSet;
 class UGameplayAbility;
