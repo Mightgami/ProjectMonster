@@ -41,10 +41,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SwitchToPartyMember(int32 NewIndex);
 
+	FORCEINLINE int32 GetPlayerLevel() const { return Level; }
+	
 	// Evento delegato che può essere assegnato in Blueprint
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnSwitchCharacter OnSwitchCharacter;
-
 protected:
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
@@ -72,5 +73,8 @@ protected:
 	// Notifica al character il cambio mesh/anim
 	void NotifyCharacterSwitch(const FGameplayTag& MemberTag);
 
+private:
 
+	UPROPERTY(VisibleAnywhere)
+	int32 Level = 1;
 };

@@ -9,6 +9,7 @@
 class UAttributeSet;
 class UAbilitySystemComponent;
 class UOverlayWidgetController;
+class UPMAttributeMenuWidgetController;
 class UPMUserWidget;
 struct FWidgetControllerParams;
 
@@ -18,14 +19,18 @@ class PROJECTMONSTER_API APMHUD : public AHUD
 	GENERATED_BODY()
 public:
 
-	UPROPERTY()
-	TObjectPtr<UPMUserWidget>  OverlayWidget;
+	
 	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WCParams);
+	UPMAttributeMenuWidgetController* GetAttributeMenuWidgetController(const FWidgetControllerParams& WCParams);
 
 	void InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS);
 
 private:
 
+	
+	UPROPERTY()
+	TObjectPtr<UPMUserWidget>  OverlayWidget;
+	
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UPMUserWidget> OverlayWidgetClass;
 	
@@ -34,4 +39,10 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UOverlayWidgetController> OverlayWidgetControllerClass;
+
+	UPROPERTY()
+	TObjectPtr<UPMAttributeMenuWidgetController> AttributeMenuWidgetController;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UPMAttributeMenuWidgetController> AttributeMenuWidgetControllerClass;
 };

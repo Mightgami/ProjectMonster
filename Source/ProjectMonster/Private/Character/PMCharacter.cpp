@@ -102,6 +102,13 @@ void APMCharacter::PossessedBy(AController* NewController)
     AddCharacterAbilities();
 }
 
+int32 APMCharacter::GetPlayerLevel()
+{
+    const APMPlayerState* PMPlayerState = GetPlayerState<APMPlayerState>();
+    check(PMPlayerState);
+    return PMPlayerState->GetPlayerLevel();
+}
+
 void APMCharacter::InitAbilityActorInfo()
 {
     APMPlayerState* PMPlayerState = GetPlayerState<APMPlayerState>();
@@ -119,4 +126,5 @@ void APMCharacter::InitAbilityActorInfo()
             PMHUD->InitOverlay(PMPlayerController, PMPlayerState, AbilitySystemComponent, AttributeSet);
         }
     }
+    InitializeDefaultAttributes();
 }

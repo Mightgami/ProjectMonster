@@ -33,8 +33,9 @@ public:
     // End Regio IAttackEndInterface
     virtual void PossessedBy(AController* NewController) override;
     
-    void UpdateAnimInstance(TSubclassOf<UPaperZDAnimInstance> PaperZDAnimInstance);
-
+    /** Combat Interface */
+    virtual int32 GetPlayerLevel() override;
+    /** end Combat Interface */
 protected:
     /** Spring arm to offset the camera from the character */
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)

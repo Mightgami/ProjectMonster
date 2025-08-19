@@ -4,6 +4,7 @@
 #include "UI/HUD/PMHUD.h"
 
 #include "UI/WidgetControllers/OverlayWidgetController.h"
+#include "UI/WidgetControllers/PMAttributeMenuWidgetController.h"
 #include "UI/WidgetS/PMUserWidget.h"
 
 void APMHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
@@ -27,9 +28,20 @@ UOverlayWidgetController* APMHUD::GetOverlayWidgetController(const FWidgetContro
 		OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
 		OverlayWidgetController->BindCallBacksToDependencies();
-		
-		return OverlayWidgetController;
 	}
 	return OverlayWidgetController;
 }
+
+UPMAttributeMenuWidgetController* APMHUD::GetAttributeMenuWidgetController(const FWidgetControllerParams& WCParams)
+{
+
+	if (AttributeMenuWidgetController == nullptr)
+	{
+		AttributeMenuWidgetController = NewObject<UPMAttributeMenuWidgetController>(this, AttributeMenuWidgetControllerClass);
+		AttributeMenuWidgetController->SetWidgetControllerParams(WCParams);
+		AttributeMenuWidgetController->BindCallBacksToDependencies();
+	}
+	return AttributeMenuWidgetController;
+}
+
 

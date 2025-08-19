@@ -21,8 +21,6 @@ public:
 
     virtual void SetupInputComponent() override;
 
-
-
 protected:
 
     // Referenze agli asset di Input Mapping Context e Input Action

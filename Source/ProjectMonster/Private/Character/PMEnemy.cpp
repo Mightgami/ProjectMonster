@@ -22,3 +22,8 @@ void APMEnemy::InitAbilityActorInfo()
 {
 	Cast<UPMAbilitySystemComponent>(AbilitySystemComponent)->InitAbilityActorInfo(this, this);
 }
+
+int32 APMEnemy::GetPlayerLevel()
+{
+	return Level;
+}
