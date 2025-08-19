@@ -150,14 +150,14 @@ void UAsyncFlyTo::SetPawnVelocity(bool ShouldStop) const
 	{
 		const FVector Direction = (TargetLocation - PawnItself->GetActorLocation()).GetSafeNormal();
 		const float FlyingSpeed = Character->GetCharacterMovement()->MaxFlySpeed;
-		if (Direction.X > 0.0f)
-		{
-			PawnItself->SetActorRotation(FRotator(0.0f, 0.0f, 0.0f));
-		}
-		else if (Direction.X < 0.0f)
-		{
-			PawnItself->SetActorRotation(FRotator(0.0f, 180.0f, 0.0f));
-		}
+		// if (Direction.X > 0.0f)
+		// {
+		// 	PawnItself->SetActorRotation(FRotator(0.0f, 0.0f, 0.0f));
+		// }
+		// else if (Direction.X < 0.0f)
+		// {
+		// 	PawnItself->SetActorRotation(FRotator(0.0f, 180.0f, 0.0f));
+		// }
 		Character->GetCharacterMovement()->Velocity = ShouldStop ? FVector::ZeroVector : Direction * FlyingSpeed;
 	}
 }
