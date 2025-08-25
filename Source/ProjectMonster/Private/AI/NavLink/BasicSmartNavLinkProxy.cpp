@@ -11,6 +11,8 @@ ABasicSmartNavLinkProxy::ABasicSmartNavLinkProxy()
 
 	PointLinks[0].Left = FVector(0.f, 0.f, 0.f);
 	PointLinks[0].Right = FVector(100.f, 0.f, 0.f);
+	PointLinks[0].LeftProjectHeight = 0.f;
+	PointLinks[0].MaxFallDownLength = 0.f; // aka RightProjectHeight
 }
 
 #if WITH_EDITOR
@@ -34,6 +36,9 @@ void ABasicSmartNavLinkProxy::PostEditMove(bool bFinished)
 	}
 	
 	PointLinks[0].Left = FVector(0.f, 0.f, 0.f);
+	PointLinks[0].LeftProjectHeight = 0.f;
+	PointLinks[0].MaxFallDownLength = 0.f; // aka RightProjectHeight
+
 	bSmartLinkIsRelevant = false;
 	
 	if (bFinished)

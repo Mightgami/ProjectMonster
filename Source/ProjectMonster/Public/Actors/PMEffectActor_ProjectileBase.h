@@ -3,14 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PaperZDAnimationComponent.h"
 #include "Actors/PMEffectActor.h"
 #include "PMEffectActor_ProjectileBase.generated.h"
 
 class UProjectileMovementComponent;
-class UPaperFlipbookComponent;
 class USphereComponent;
-class UPaperZDAnimationComponent;
+
 
 /**
  * 
