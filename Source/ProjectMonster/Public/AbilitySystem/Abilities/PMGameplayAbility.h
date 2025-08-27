@@ -13,5 +13,8 @@ UCLASS()
 class PROJECTMONSTER_API UPMGameplayAbility : public UGameplayAbility
 {
 	GENERATED_BODY()
-	
+public:
+
+	UPROPERTY(EditDefaultsOnly, Category="Input")
+	FGameplayTag StartupInputTag;
 };

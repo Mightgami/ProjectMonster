@@ -15,7 +15,8 @@
 				"PaperZD",
 				"GameplayAbilities",
 				"CoreUObject",
-				"BlueprintGraph"
+				"BlueprintGraph",
+				"EnhancedInput"
 			]
 		}
 	],

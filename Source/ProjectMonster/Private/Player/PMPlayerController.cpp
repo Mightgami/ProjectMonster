@@ -1,7 +1,11 @@
 #include "Player/PMPlayerController.h"
+
+#include "AbilitySystemBlueprintLibrary.h"
 #include "Interfaces/PlayerActionsInterface.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "AbilitySystem/PMAbilitySystemComponent.h"
+#include "Input/PMInputComponent.h"
 #include "Player/PMPlayerState.h"
 
 void APMPlayerController::SetupInputComponent()
@@ -9,7 +13,7 @@ void APMPlayerController::SetupInputComponent()
     Super::SetupInputComponent();
 
     // Verifica che sia presente EnhancedInputComponent
-    if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
+    if (UPMInputComponent* PMInputComponent = CastChecked<UPMInputComponent>(InputComponent))
     {
         // Ottieni il Local Player Subsystem
         if (ULocalPlayer* LP = GetLocalPlayer())
@@ -26,13 +30,13 @@ void APMPlayerController::SetupInputComponent()
         // Move: tipicamente valore 2D (X,Y)
         if (IA_Move)
         {
-            EnhancedInputComponent->BindAction(IA_Move, ETriggerEvent::Triggered, this, &APMPlayerController::Move);
+            PMInputComponent->BindAction(IA_Move, ETriggerEvent::Triggered, this, &APMPlayerController::Move);
         }
 
         // Jump: azione binaria (pressed/released)
         if (IA_Jump)
         {
-            EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APMPlayerController::Jump);
+            PMInputComponent->BindAction(IA_Jump, ETriggerEvent::Started, this, &APMPlayerController::Jump);
             // Se vuoi anche fine salto:
             // EnhancedInputComponent->BindAction(IA_Jump, ETriggerEvent::Completed, this, &AMyPlayerController::StopJumping);
         }
@@ -40,21 +44,26 @@ void APMPlayerController::SetupInputComponent()
         // Attack: azione binaria
         if (IA_Attack)
         {
-            EnhancedInputComponent->BindAction(IA_Attack, ETriggerEvent::Started, this, &APMPlayerController::Attack);
+            PMInputComponent->BindAction(IA_Attack, ETriggerEvent::Started, this, &APMPlayerController::Attack);
         }
         if (IA_Switch1)
         {
-            EnhancedInputComponent->BindAction(IA_Switch1,  ETriggerEvent::Started, this, &APMPlayerController::SwitchToMember1);
+            PMInputComponent->BindAction(IA_Switch1,  ETriggerEvent::Started, this, &APMPlayerController::SwitchToMember1);
         }
         if (IA_Switch2)
         {
-            EnhancedInputComponent->BindAction(IA_Switch2,  ETriggerEvent::Started, this, &APMPlayerController::SwitchToMember2);
+            PMInputComponent->BindAction(IA_Switch2,  ETriggerEvent::Started, this, &APMPlayerController::SwitchToMember2);
         }
         if (IA_Switch3)
         {
-            EnhancedInputComponent->BindAction(IA_Switch3,  ETriggerEvent::Started, this, &APMPlayerController::SwitchToMember3);
+            PMInputComponent->BindAction(IA_Switch3,  ETriggerEvent::Started, this, &APMPlayerController::SwitchToMember3);
         }
 
+        if (InputConfig)
+        {
+            PMInputComponent->BindAbilityActions(InputConfig, this, &ThisClass::AbilityInputTagPressed, &ThisClass::AbilityInputTagReleased, &ThisClass::AbilityInputTagHeld);
+        }
+        
     }
 }
 
@@ -103,6 +112,34 @@ void APMPlayerController::SwitchToMember3()
 {
     SwitchToMemberByIndex(2);
 
+}
+
+void APMPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
+{
+    GEngine->AddOnScreenDebugMessage(1, 3.f, FColor::Red, *InputTag.ToString());
+}
+
+void APMPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
+{
+    GEngine->AddOnScreenDebugMessage(2, 3.f, FColor::Blue, *InputTag.ToString());
+    if (GetASC() == nullptr) return;
+    GetASC()->AbilityInputTagReleased(InputTag);
+}
+
+void APMPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
+{
+    GEngine->AddOnScreenDebugMessage(3, 3.f, FColor::Green, *InputTag.ToString());
+    if (GetASC() == nullptr) return;
+    GetASC()->AbilityInputTagHeld(InputTag);
+}
+
+UPMAbilitySystemComponent* APMPlayerController::GetASC()
+{
+    if (PMAbilitySystemComponent == nullptr)
+    {
+        PMAbilitySystemComponent = Cast<UPMAbilitySystemComponent>(UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetPawn<APawn>()));
+    }
+    return PMAbilitySystemComponent;
 }
 
 void APMPlayerController::SwitchToMemberByIndex(int32 Index)

@@ -95,4 +95,52 @@ void FPMGameplayTags::InitializeNativeGameplayTags()
 		FName("Attributes.Secondary.MaxMana"),
 		FString("Maximum amount of Mana obtainable")
 		);
+
+
+	/*
+	 * Input tag
+	 */
+	
+	GameplayTags.InputTag_1 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.1"),
+		FString("Input tag for 1 button")
+		);
+	
+	GameplayTags.InputTag_2 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.2"),
+		FString("Input tag for 2 button")
+		);
+	
+	GameplayTags.InputTag_3 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.3"),
+		FString("Input tag for 3 button")
+		);
+	
+	GameplayTags.InputTag_4 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.4"),
+		FString("Input tag for 4 button")
+		);
+	
+	GameplayTags.InputTag_5 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.5"),
+		FString("Input tag for 5 button")
+		);
+	
+	GameplayTags.InputTag_6 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.6"),
+		FString("Input tag for 6 button")
+		);
+	
+	GameplayTags.InputTag_7 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.7"),
+		FString("Input tag for 7 button")
+		);
+	
+	GameplayTags.InputTag_8 = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.8"),
+		FString("Input tag for 8 button")
+		);
+
+	
+
 }

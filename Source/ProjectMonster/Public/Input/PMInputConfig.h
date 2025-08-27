@@ -8,7 +8,7 @@
 #include "PMInputConfig.generated.h"
 
 USTRUCT(BlueprintType)
-struct FAuraInputAction
+struct FPMInputAction
 {
 	GENERATED_BODY()
 
@@ -27,5 +27,5 @@ public:
 	const UInputAction* FindAbilityInputActionForTag(const FGameplayTag& InputTag, bool bLogNotFound = false) const;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TArray<FAuraInputAction> AbilityInputActions;
+	TArray<FPMInputAction> AbilityInputActions;
 };

@@ -4,11 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "GameplayTagContainer.h"
 #include "InputActionValue.h"     // Per Enhanced Input
 #include "PMPlayerController.generated.h"
 
+class UPMAbilitySystemComponent;
 class UInputMappingContext;
 class UInputAction;
+class UPMInputConfig;
 /**
  * 
  */
@@ -53,5 +56,18 @@ protected:
     void SwitchToMember2();
     void SwitchToMember3();
 
+    
+    void AbilityInputTagPressed(FGameplayTag InputTag);
+    void AbilityInputTagReleased(FGameplayTag InputTag);
+    void AbilityInputTagHeld(FGameplayTag InputTag);
+
+    UPROPERTY(EditDefaultsOnly, Category="Input")
+    TObjectPtr<UPMInputConfig> InputConfig;
+    
+    UPROPERTY()
+    TObjectPtr<UPMAbilitySystemComponent> PMAbilitySystemComponent;
+
+    UPMAbilitySystemComponent* GetASC();
+    
     void SwitchToMemberByIndex(int32 Index);
 };
